@@ -1,0 +1,22 @@
+theme = "catppuccin_macchiato"
+
+[editor]
+true-color = true
+bufferline = "always"
+text-width = 100
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal.space]
+"f" = "file_picker_in_current_directory"
+"F" = "file_picker"
+
+[keys.normal.g]
+"[" = "jump_backward"
+"]" = "jump_forward"

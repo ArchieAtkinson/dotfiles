@@ -1,0 +1,5 @@
+# Dotfiles
+
+Requires:
+- stow
+- just

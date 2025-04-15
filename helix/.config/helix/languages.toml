@@ -1,0 +1,65 @@
+# Rust
+[[language]]
+name = "rust"
+auto-format = true
+language-servers = ["typos", "rust-analyzer"]
+
+roots = [
+  "Cargo.toml",
+  "Cargo.lock"
+]
+
+[language.debugger]
+command = "probe-rs"
+name = "probe-rs"
+args = ["dap-server", "--log-file=/home/aa/zero-to-async/ch6_async_await/log.log", "--single-session"]
+port-arg = "--port {}"
+transport = "tcp"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+
+[[language.debugger.templates.completion]]
+completion = "filename"
+name = "binary"
+
+[language.debugger.templates.args]
+runInTerminal = true
+
+
+[[language]]
+name = "markdown"
+language-servers = ["typos", "marksman"]
+
+
+[[language]]
+name = "cpp"
+language-servers = ["typos", "clangd"]
+roots = ["CMakeLists.txt"]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+diagnostics.experimental.enable = true
+
+[language-server.typos]
+command = "typos-lsp"
+environment = {"RUST_LOG" = "error"}
+config.diagnosticSeverity = "Warning"
+
+[language-server.clangd]
+command = "clangd-17"
+
+[language-server.marksman]
+command = "marksman"
+
+

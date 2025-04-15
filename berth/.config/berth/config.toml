@@ -1,0 +1,9 @@
+[environment.notus]
+dockerfile = "notus-ext.dockerfile"
+create_options = ["-v $HOME/.config/helix:/home/user/.config/helix",
+   "-v $HOME/Notus:/home/user/west-workspace/notus",
+   "-v $HOME/.ssh:/home/user/.ssh",
+   "-it",
+]
+entry_options = ["-it"]
+entry_cmd = "/bin/bash"
