@@ -1,4 +1,4 @@
-home := "/home/aa"
+home := "$HOME"
 
 [no-cd, no-exit-message]
 @all:

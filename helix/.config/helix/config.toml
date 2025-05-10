@@ -17,6 +17,9 @@ hidden = false
 "f" = "file_picker_in_current_directory"
 "F" = "file_picker"
 
-[keys.normal.g]
-"[" = "jump_backward"
-"]" = "jump_forward"
+[keys.normal]
+"C-[" = "jump_backward"
+"C-]" = "jump_forward"
+
+[keys.insert]
+"A-x" = "normal_mode"
