@@ -6,6 +6,9 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock" "before-sleep" "swaylock"
+
 input {
     keyboard {
         xkb {
@@ -303,7 +306,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "ghostty"; }
-    Mod+D { spawn "fuzzel"; }
+    Mod+D { spawn "kickoff"; }
     Super+Alt+L { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

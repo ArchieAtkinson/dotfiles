@@ -15,7 +15,7 @@
     "wireplumber": {
         "format": "\udb81\udd7e  {volume}%",
         "max-volume": 200,
-        "scroll-step": 5
+        "scroll-step": 0.2
     },
 
     "battery": {
@@ -26,6 +26,7 @@
     },
 
     "backlight": {
+        "scroll-step": 0.2,
         "format": "\udb80\udcdf  {percent}%"
     },
 
