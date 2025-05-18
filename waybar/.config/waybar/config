@@ -27,7 +27,8 @@
 
     "backlight": {
         "scroll-step": 0.2,
-        "format": "\udb80\udcdf  {percent}%"
+        "format": "\udb80\udcdf  {percent}%",
+        "on-click": "cd $HOME/dotfiles && just toggle-theme"
     },
 
     "load": {
