@@ -1,0 +1,8 @@
+
+theme "catppuccin-macchiato"
+
+keybinds {
+	normal {
+		bind "Ctrl e" { ToggleTab; }
+	}
+}

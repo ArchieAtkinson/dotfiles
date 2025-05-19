@@ -1,4 +1,5 @@
 home := "$HOME"
+set shell := ["fish", "-c"]
 
 [no-cd, no-exit-message]
 @all:
@@ -8,7 +9,10 @@ home := "$HOME"
 [no-cd, no-exit-message]
 @delete:
     stow --target={{home}} --delete */
-    
+
+waybar-restart:
+    kill -SIGUSR2 .waybar-wrapped
+
 toggle-theme:
     #!/usr/bin/env fish
 

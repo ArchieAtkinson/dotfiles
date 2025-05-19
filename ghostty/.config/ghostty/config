@@ -1,2 +1,3 @@
 theme = dark:catppuccin-macchiato,light:catppuccin-latte
 window-decoration = none
+initial-command = zellij -l welcome
