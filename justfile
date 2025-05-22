@@ -16,10 +16,15 @@ waybar-restart:
 
 [no-cd, no-exit-message]
 @dark-theme:
+    # Helix
     sed -i 's/theme = ".*"/theme = "catppuccin_macchiato"/g' helix/.config/helix/config.toml
+    pkill -USR1 hx
+
+    # Zellij
     sed -i 's/theme ".*"/theme "catppuccin-macchiato"/g' zellij/.config/zellij/config.kdl
 
-    pkill -USR1 hx
+    # Bat
+    sed -i 's/theme=".*"/theme="Catppuccin Macchiato"/g' bat/.config/bat/config
     
     # Required for Ghostty and GUIs
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
@@ -27,10 +32,17 @@ waybar-restart:
       
 [no-cd, no-exit-message]
 @light-theme:
+    # Helix
     sed -i 's/theme = ".*"/theme = "catppuccin_latte"/g' helix/.config/helix/config.toml
+    pkill -USR1 hx
+
+    # Zellij
     sed -i 's/theme ".*"/theme "catppuccin-latte"/g' zellij/.config/zellij/config.kdl
 
-    pkill -USR1 hx
+    
+    # Bat
+    export BAT_THEME="Catppuccin Latte"
+    sed -i 's/theme=".*"/theme="Catppuccin Latte"/g' bat/.config/bat/config
     
     # Required for Ghostty and GUIs
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
