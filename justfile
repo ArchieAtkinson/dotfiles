@@ -41,7 +41,6 @@ waybar-restart:
 
     
     # Bat
-    export BAT_THEME="Catppuccin Latte"
     sed -i 's/theme=".*"/theme="Catppuccin Latte"/g' bat/.config/bat/config
     
     # Required for Ghostty and GUIs

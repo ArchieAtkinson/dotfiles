@@ -3,3 +3,5 @@
 	email = archieatkinson97@gmail.com
 [init]
 	defaultBranch = main
+[delta]
+true-color = always

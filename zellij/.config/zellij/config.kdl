@@ -1,17 +1,53 @@
-theme "catppuccin-macchiato"
-
+theme "catppuccin-latte"
 session_serialization true
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
 show_startup_tips false
+default_mode   "locked"
 
 keybinds clear-defaults=true {
-    normal {
-        bind "Ctrl e" { GoToNextTab; }
+
+    shared {
+        bind "Ctrl Space" { SwitchToMode "normal"; }
     }
-    locked {
-        bind "Ctrl g" { SwitchToMode "normal"; }
+    
+    shared_except "locked" {
+        bind "Esc" { SwitchToMode "locked"; }        
     }
+    
+    normal clear-defaults=true{
+        bind "q" {
+          LaunchOrFocusPlugin "zj-quit" {
+            floating true
+          }
+          SwitchToMode "locked"
+        }
+
+         // Switch modes
+        bind "p" { SwitchToMode "Pane"; }
+        bind "t" { SwitchToMode "Tab"; }
+        bind "r" { SwitchToMode "Resize"; }
+        bind "c" { SwitchToMode "Scroll"; }
+        bind "s" { SwitchToMode "Session"; }
+        bind "Esc" { SwitchToMode "locked"; }
+        bind "m" { SwitchToMode "Move"; }
+        bind "e" { GoToNextTab; }
+        bind "f" { ToggleFloatingPanes; SwitchToMode "locked"; }
+        bind "o" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
+
+        // Navigate panes
+        bind "h" "Left" { MoveFocusOrTab "Left"; SwitchToMode "normal"; }
+        bind "l" "Right" { MoveFocusOrTab "Right"; SwitchToMode "normal"; }
+        bind "j" "Down" { MoveFocus "Down"; SwitchToMode "normal"; }
+        bind "k" "Up" { MoveFocus "Up"; SwitchToMode "normal"; }
+    }
+    
     pane {
         bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
@@ -28,7 +64,7 @@ keybinds clear-defaults=true {
         bind "l" { MoveFocus "right"; }
         bind "n" { NewPane; SwitchToMode "normal"; }
         bind "p" { SwitchFocus; }
-        bind "Ctrl p" { SwitchToMode "normal"; }
+        bind "enter" { SwitchToMode "normal"; }
         bind "r" { NewPane "right"; SwitchToMode "normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
@@ -135,27 +171,7 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
     }
-    shared_except "locked" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt =" { Resize "Increase"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
-        bind "Alt f" { ToggleFloatingPanes; }
-        bind "Ctrl g" { SwitchToMode "locked"; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
-        bind "Alt o" { MoveTab "right"; }
-        bind "Ctrl q" { Quit; }
-    }
+
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
     }
@@ -179,9 +195,6 @@ keybinds clear-defaults=true {
     }
     shared_except "normal" "locked" "entersearch" {
         bind "enter" { SwitchToMode "normal"; }
-    }
-    shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
-        bind "esc" { SwitchToMode "normal"; }
     }
     shared_among "pane" "tmux" {
         bind "x" { CloseFocus; SwitchToMode "normal"; }
@@ -261,5 +274,7 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+    zj-quit location="file:~/.config/zellij/bin/zj-quit.wasm"
 }
+load_plugins {}
 
