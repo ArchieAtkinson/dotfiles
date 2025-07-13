@@ -1,4 +1,4 @@
-theme "catppuccin-latte"
+theme "catppuccin-macchiato"
 session_serialization true
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
