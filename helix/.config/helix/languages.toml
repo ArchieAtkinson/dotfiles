@@ -35,6 +35,7 @@ language-servers = ["typos", "marksman"]
 
 [[language]]
 name = "cpp"
+formatter = { command = "clang-format" }
 language-servers = ["typos", "clangd"]
 roots = ["CMakeLists.txt"]
 
@@ -57,7 +58,7 @@ environment = {"RUST_LOG" = "error"}
 config.diagnosticSeverity = "Warning"
 
 [language-server.clangd]
-command = "clangd-17"
+command = "clangd"
 
 [language-server.marksman]
 command = "marksman"

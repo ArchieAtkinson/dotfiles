@@ -13,6 +13,9 @@ set shell := ["fish", "-c"]
 waybar-restart:
     kill -SIGUSR2 .waybar-wrapped
 
+[no-cd, no-exit-message]
+@switch:
+    home-manager --flake . switch
 
 [no-cd, no-exit-message]
 @dark-theme:

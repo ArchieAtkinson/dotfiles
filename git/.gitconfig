@@ -1,7 +1,12 @@
 [user]
 	name = Archie Atkinson
 	email = archieatkinson97@gmail.com
+
 [init]
 	defaultBranch = main
+
 [delta]
-true-color = always
+	true-color = always
+
+[core]
+	excludesfile = /home/archie/.gitglobalignore
