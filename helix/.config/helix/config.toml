@@ -28,6 +28,13 @@ cursor-line = "hint"
 "down" = "no_op"
 "left" = "no_op"
 "right" = "no_op"
+C-y = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
 
 [keys.insert]
 "A-x" = "normal_mode"
@@ -41,3 +48,4 @@ cursor-line = "hint"
 "down" = "no_op"
 "left" = "no_op"
 "right" = "no_op"
+

@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
-
+{ pkgs, lib, ... }:
+let
+  local = pkgs.callPackage ./pkgs { inherit (pkgs) lib; };
+in
 {
   home.username = "archie";
   home.homeDirectory = "/home/archie";
@@ -9,9 +11,29 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  # programs.fish.enable = true;
-
+  programs.yazi = {
+    enable = true;
+    settings = {
+      mgr = {
+        show_hidden = true;
+        sort_by = "mtime";
+        sort_reverse = true;
+      };
+    };
+    flavors = {
+      inherit (pkgs.yazi-flavors)
+        catppuccin-macchiato
+        catppuccin-latte
+        ;
+    };
+    theme.flavor = {
+      dark = "catppuccin-macchiato";
+      light = "catppuccin-latte";
+    };    
+  };
+ 
   home.packages = with pkgs; [
+      local.tattoy
       fish
       helix
       lazygit
@@ -27,12 +49,11 @@
       wget
       asciinema_3
       fzf
+      zoxide
+      fuzzel
   ];
 
   home.file = {
-  };
-
-  home.sessionVariables = {
   };
   
   programs.home-manager.enable = true;

@@ -1,0 +1,10 @@
+frame_rate = 60
+show_tattoy_indicator = true
+show_startup_logo = true
+scrollback_size = 1000
+
+[animated_cursor]
+enabled = true
+opacity = 1.0
+path = "shaders/cursors/smear_fade.glsl"
+cursor_scale = 1.0

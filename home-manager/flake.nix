@@ -7,18 +7,24 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-yazi-flavors.url = "github:aguirre-matteo/nix-yazi-flavors";
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, nix-yazi-flavors, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ nix-yazi-flavors.overlay ];
+      };
     in
     {
       homeConfigurations."archie" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+        ];
       };
     };
 }

@@ -13,7 +13,7 @@ set shell := ["fish", "-c"]
 waybar-restart:
     kill -SIGUSR2 .waybar-wrapped
 
-[no-cd, no-exit-message]
+[working-directory: 'home-manager', no-exit-message]
 @switch:
     home-manager --flake . switch
 

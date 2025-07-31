@@ -7,10 +7,9 @@
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "hyprlock" "before-sleep" "hyprlock"
-
-// Required for X11 apps
+spawn-at-startup "swayidle"
 spawn-at-startup "xwayland-satellite"
+
 environment {
     DISPLAY ":0"
 }
@@ -283,7 +282,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "ghostty"; }
-    Mod+D { spawn "kickoff"; }
+    Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "hyprlock"; }
     Mod+S { screenshot; }
 

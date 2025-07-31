@@ -9,6 +9,15 @@ keybinds clear-defaults=true {
 
     shared {
         bind "Ctrl Space" { SwitchToMode "normal"; }
+
+        bind "Alt Space" { 
+            // Note: you must use the absolute path to the plugin file
+            LaunchOrFocusPlugin "file:.config/zellij/bin/zsm.wasm" {
+                floating true
+                move_to_focused_tab true
+                show_resurrectable_sessions true
+            }
+        }
     }
     
     shared_except "locked" {
@@ -271,9 +280,7 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" {
-        welcome_screen true
-    }
+    welcome-screen location="zellij:session-manager"
     zj-quit location="file:~/.config/zellij/bin/zj-quit.wasm"
 }
 load_plugins {}

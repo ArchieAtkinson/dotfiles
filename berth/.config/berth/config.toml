@@ -7,3 +7,17 @@ create_options = ["-v $HOME/.config/helix:/home/user/.config/helix",
 ]
 entry_options = ["-it"]
 entry_cmd = "/bin/bash"
+
+
+[environment.notus2]
+image = "notusraw"
+create_options = ["-v $HOME/dotfiles/helix/.config/helix:/home/user/.config/helix",
+   "-v $HOME/notus-workspace/notus:/home/user/west-workspace/notus",
+   "-v $HOME/.ssh:/home/user/.ssh",
+   "-it",
+]
+cp_cmds = ["home CONTAINER:/home/user"]
+exec_options = ["-u user","-e USER=user"]
+exec_cmds = ["bash -c 'cd /home/user/home && ./install.sh'"]
+entry_options = ["-it", "-u user", "-e USER=user"]
+entry_cmd = "/bin/bash"
