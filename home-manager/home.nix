@@ -31,10 +31,22 @@ in
       light = "catppuccin-latte";
     };    
   };
- 
+  
+  home.shell.enableFishIntegration = true;
+
+  programs.direnv = {
+    enable = true;
+    silent = true;
+    nix-direnv.enable = true;
+  };
+
+  nixpkgs.config.allowUnfree = true; 
   home.packages = with pkgs; [
-      local.tattoy
+      neofetch
       fish
+      stow
+      local.berth
+      local.tattoy
       helix
       lazygit
       neofetch
@@ -51,9 +63,19 @@ in
       fzf
       zoxide
       fuzzel
-  ];
+      mako
+      unzip
+      lxsession
+      minicom
+      lazydocker
+      devcontainer
+   ];
 
-  home.file = {
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/archie/system";
   };
   
   programs.home-manager.enable = true;

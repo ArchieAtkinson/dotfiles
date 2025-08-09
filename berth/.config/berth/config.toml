@@ -21,3 +21,12 @@ exec_options = ["-u user","-e USER=user"]
 exec_cmds = ["bash -c 'cd /home/user/home && ./install.sh'"]
 entry_options = ["-it", "-u user", "-e USER=user"]
 entry_cmd = "/bin/bash"
+
+
+[environment.thermal]
+image = "thermal"
+create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera",
+   "-it",
+]
+entry_options = ["-it"]
+entry_cmd = "/bin/bash"

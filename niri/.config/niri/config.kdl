@@ -9,6 +9,7 @@
 
 spawn-at-startup "swayidle"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "mako"
 
 environment {
     DISPLAY ":0"
