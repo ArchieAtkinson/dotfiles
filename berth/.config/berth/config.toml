@@ -1,32 +1,38 @@
-[environment.notus]
-dockerfile = "notus-ext.dockerfile"
-create_options = ["-v $HOME/.config/helix:/home/user/.config/helix",
-   "-v $HOME/Notus:/home/user/west-workspace/notus",
+[preset.standard]
+create_options = ["-it",
    "-v $HOME/.ssh:/home/user/.ssh",
-   "-it",
+   "-v $HOME/dotfiles/helix/.config/helix:/home/user/.config/helix",
+   "-v $HOME/dotfiles/lazygit/.config/lazygit:/home/user/.config/lazygit",
+   "-v $HOME/dotfiles/yazi/.config/yazi:/home/user/.config/yazi",
 ]
 entry_options = ["-it"]
-entry_cmd = "/bin/bash"
 
-
-[environment.notus2]
+[environment.notus]
 image = "notusraw"
-create_options = ["-v $HOME/dotfiles/helix/.config/helix:/home/user/.config/helix",
-   "-v $HOME/notus-workspace/notus:/home/user/west-workspace/notus",
-   "-v $HOME/.ssh:/home/user/.ssh",
-   "-it",
-]
-cp_cmds = ["home CONTAINER:/home/user"]
+create_options = ["-v $HOME/notus-workspace/notus:/home/user/west-workspace/notus"]
 exec_options = ["-u user","-e USER=user"]
-exec_cmds = ["bash -c 'cd /home/user/home && ./install.sh'"]
-entry_options = ["-it", "-u user", "-e USER=user"]
+entry_options = [ "-u user", "-e USER=user"]
+cp_cmds = ["standard_install.sh CONTAINER:/tmp/standard_install.sh"]
+exec_cmds = ["sudo chmod +x /tmp/standard_install.sh","bash /tmp/standard_install.sh"]
 entry_cmd = "/bin/bash"
-
+presets = ["standard"]
 
 [environment.thermal]
 image = "thermal"
-create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera",
-   "-it",
-]
-entry_options = ["-it"]
+create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera"]
+cp_cmds = ["root_install.sh CONTAINER:/tmp/root_install.sh"]
+exec_cmds = ["chmod +x /tmp/root_install.sh","bash /tmp/root_install.sh"]
 entry_cmd = "/bin/bash"
+presets = ["standard"]
+
+[environment.lpm]
+image = "marlin-lpm-fw"
+create_options = ["-v $HOME/arribada/marlin-lpm-fw:/home/user/west-workspace/marlin-lpm-fw",
+   "-v /dev:/dev",
+   "--privileged"]
+exec_options = ["-u user","-e USER=user"]
+entry_options = [ "-u user", "-e USER=user"]
+cp_cmds = ["standard_install.sh CONTAINER:/tmp/standard_install.sh"]
+exec_cmds = ["sudo chmod +x /tmp/standard_install.sh","bash /tmp/standard_install.sh"]
+entry_cmd = "/bin/bash"
+presets = ["standard"]

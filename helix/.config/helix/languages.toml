@@ -9,6 +9,8 @@ roots = [
   "Cargo.lock"
 ]
 
+indent = { tab-width = 4, unit = " " }
+
 [language.debugger]
 command = "probe-rs"
 name = "probe-rs"
@@ -38,6 +40,8 @@ name = "cpp"
 formatter = { command = "clang-format" }
 language-servers = ["typos", "clangd"]
 roots = ["CMakeLists.txt"]
+auto-format = true
+indent = { tab-width = 4, unit = " " }
 
 [language.auto-pairs]
 '(' = ')'

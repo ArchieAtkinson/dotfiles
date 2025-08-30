@@ -39,14 +39,13 @@ in
     silent = true;
     nix-direnv.enable = true;
   };
-
+    
   nixpkgs.config.allowUnfree = true; 
   home.packages = with pkgs; [
       neofetch
       fish
       stow
       local.berth
-      local.tattoy
       helix
       lazygit
       neofetch
@@ -55,6 +54,7 @@ in
       zellij
       typos-lsp
       nil
+      nixd
       ripgrep
       fd
       bat
