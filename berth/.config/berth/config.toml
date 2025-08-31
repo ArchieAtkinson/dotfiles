@@ -5,34 +5,43 @@ create_options = ["-it",
    "-v $HOME/dotfiles/lazygit/.config/lazygit:/home/user/.config/lazygit",
    "-v $HOME/dotfiles/yazi/.config/yazi:/home/user/.config/yazi",
 ]
-entry_options = ["-it"]
+cp_cmds = ["nix_install.sh CONTAINER:/tmp/nix_install.sh"]
+entry_options = ["-it", "-e EDITOR=hx"]
+entry_cmd = "/bin/bash"
 
 [environment.notus]
-image = "notusraw"
+dockerfile = "$HOME/notus-workspace/notus/.devcontainer/Dockerfile"
+build_context = "$HOME/notus-workspace/notus"
 create_options = ["-v $HOME/notus-workspace/notus:/home/user/west-workspace/notus"]
 exec_options = ["-u user","-e USER=user"]
 entry_options = [ "-u user", "-e USER=user"]
-cp_cmds = ["standard_install.sh CONTAINER:/tmp/standard_install.sh"]
-exec_cmds = ["sudo chmod +x /tmp/standard_install.sh","bash /tmp/standard_install.sh"]
-entry_cmd = "/bin/bash"
+exec_cmds = ["sudo chmod +x /tmp/nix_install.sh","bash /tmp/nix_install.sh"]
 presets = ["standard"]
 
 [environment.thermal]
-image = "thermal"
+dockerfile = "$HOME/arribada/op-thermal-camera/dockerfile"
+build_context = "$HOME/arribada/op-thermal-camera"
 create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera"]
-cp_cmds = ["root_install.sh CONTAINER:/tmp/root_install.sh"]
-exec_cmds = ["chmod +x /tmp/root_install.sh","bash /tmp/root_install.sh"]
-entry_cmd = "/bin/bash"
+exec_cmds = ["chmod +x /tmp/nix_install.sh","bash /tmp/nix_install.sh"]
+presets = ["standard"]
+
+
+[environment.thermal2]
+dockerfile = "$HOME/arribada/op-thermal-camera/dockerfile"
+build_context = "$HOME/arribada/op-thermal-camera"
+create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera"]
+cp_cmds = ["bundles/packages  CONTAINER:/tmp/"]
+exec_cmds = ["dpkg --force-overwrite -i -R /tmp/packages"]
 presets = ["standard"]
 
 [environment.lpm]
-image = "marlin-lpm-fw"
+dockerfile = "$HOME/arribada/marlin-lpm-fw/.devcontainer/Dockerfile"
+build_context = "$HOME/arribada/marlin-lpm-fw"
 create_options = ["-v $HOME/arribada/marlin-lpm-fw:/home/user/west-workspace/marlin-lpm-fw",
    "-v /dev:/dev",
-   "--privileged"]
+   "--privileged",
+]
 exec_options = ["-u user","-e USER=user"]
 entry_options = [ "-u user", "-e USER=user"]
-cp_cmds = ["standard_install.sh CONTAINER:/tmp/standard_install.sh"]
-exec_cmds = ["sudo chmod +x /tmp/standard_install.sh","bash /tmp/standard_install.sh"]
-entry_cmd = "/bin/bash"
+exec_cmds = ["sudo chmod +x /tmp/nix_install.sh","bash /tmp/nix_install.sh"]
 presets = ["standard"]
