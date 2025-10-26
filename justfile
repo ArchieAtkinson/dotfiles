@@ -1,5 +1,4 @@
 home := "$HOME"
-set shell := ["fish", "-c"]
     
 [no-cd, no-exit-message]
 @all:

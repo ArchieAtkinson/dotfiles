@@ -5,7 +5,7 @@ create_options = ["-it",
    "-v $HOME/dotfiles/lazygit/.config/lazygit:/home/user/.config/lazygit",
    "-v $HOME/dotfiles/yazi/.config/yazi:/home/user/.config/yazi",
 ]
-cp_cmds = ["nix_install.sh CONTAINER:/tmp/nix_install.sh"]
+cp_cmds = ["bundles/packages  CONTAINER:/tmp/"]
 entry_options = ["-it", "-e EDITOR=hx"]
 entry_cmd = "/bin/bash"
 
@@ -15,22 +15,25 @@ build_context = "$HOME/notus-workspace/notus"
 create_options = ["-v $HOME/notus-workspace/notus:/home/user/west-workspace/notus"]
 exec_options = ["-u user","-e USER=user"]
 entry_options = [ "-u user", "-e USER=user"]
-exec_cmds = ["sudo chmod +x /tmp/nix_install.sh","bash /tmp/nix_install.sh"]
+exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
 presets = ["standard"]
 
 [environment.thermal]
 dockerfile = "$HOME/arribada/op-thermal-camera/dockerfile"
 build_context = "$HOME/arribada/op-thermal-camera"
-create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera"]
-exec_cmds = ["chmod +x /tmp/nix_install.sh","bash /tmp/nix_install.sh"]
+create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera",
+   "-v /dev:/dev",
+   "--privileged",
+]
+exec_cmds = ["dpkg --force-overwrite -i -R /tmp/packages"]
 presets = ["standard"]
 
 
-[environment.thermal2]
-dockerfile = "$HOME/arribada/op-thermal-camera/dockerfile"
-build_context = "$HOME/arribada/op-thermal-camera"
-create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera"]
-cp_cmds = ["bundles/packages  CONTAINER:/tmp/"]
+[environment.portal]
+dockerfile = "$HOME/arribada/developer_portal/.devcontainer/Dockerfile"
+create_options = ["-v $HOME/arribada/developer_portal:/workspace/developer_portal",
+   "-p 3000:3000"
+]
 exec_cmds = ["dpkg --force-overwrite -i -R /tmp/packages"]
 presets = ["standard"]
 
@@ -43,5 +46,31 @@ create_options = ["-v $HOME/arribada/marlin-lpm-fw:/home/user/west-workspace/mar
 ]
 exec_options = ["-u user","-e USER=user"]
 entry_options = [ "-u user", "-e USER=user"]
-exec_cmds = ["sudo chmod +x /tmp/nix_install.sh","bash /tmp/nix_install.sh"]
+exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
+presets = ["standard"]
+
+
+[environment.linkit]
+dockerfile = "$PWD/.devcontainer/Dockerfile"
+build_context = "$PWD"
+create_options = ["-v $PWD:/home/user/west-workspace/linkitv4",
+   "-v /dev:/dev",
+   "--privileged",
+]
+exec_options = ["-u user","-e USER=user"]
+entry_options = [ "-u user", "-e USER=user"]
+exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
+presets = ["standard"]
+
+
+[environment.timelord]
+dockerfile = "$PWD/.devcontainer/Dockerfile"
+build_context = "$PWD"
+create_options = ["-v $PWD:/home/user/west-workspace/timelord-firmware",
+   "-v /dev:/dev",
+   "--privileged",
+]
+exec_options = ["-u user","-e USER=user"]
+entry_options = [ "-u user", "-e USER=user"]
+exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
 presets = ["standard"]

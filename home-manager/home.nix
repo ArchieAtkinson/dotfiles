@@ -10,7 +10,7 @@ in
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
-
+  
   programs.yazi = {
     enable = true;
     settings = {
@@ -40,6 +40,7 @@ in
     nix-direnv.enable = true;
   };
     
+  nixpkgs.config.segger-jlink.acceptLicense = true;
   nixpkgs.config.allowUnfree = true; 
   home.packages = with pkgs; [
       neofetch
@@ -69,6 +70,11 @@ in
       minicom
       lazydocker
       devcontainer
+      nrfconnect
+      nrf-udev
+      steam-tui
+      steamcmd
+      sdrpp
    ];
 
   programs.nh = {
