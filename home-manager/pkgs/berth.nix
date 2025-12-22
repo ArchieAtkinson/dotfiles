@@ -2,15 +2,15 @@
 
 pkgs.rustPlatform.buildRustPackage {
   pname = "berth";
-  version = "50883c6678d149137d85c88ce022633cdb4f91e9";
+  version = "c1621ccd9f5415fcb75a5a97b518c78464598cd5";
 
   src = pkgs.fetchFromGitHub {
     owner = "ArchieAtkinson";
     repo = "berth";
-    rev = "50883c6678d149137d85c88ce022633cdb4f91e9";
-    sha256 = "sha256-2KZxK6eAyz2y0sc9nmwWRhXlLUWZL5ggTVWxT025O8s=";
+    rev = "c1621ccd9f5415fcb75a5a97b518c78464598cd5";
+    sha256 = "sha256-HDzklPmLIG7ZPMNzJXNyCCUkzgT5TcQxpuWgPPE51Lk=";
   };
   doCheck = false;
-  cargoHash = "sha256-60yUTXTWk3x7Ua+W8kO/4SniW07VGlDDVijKChHK01Y=";
+  cargoHash = "sha256-LBBVFIkQ2oC5Bnbt23waIQjnBTTjksyJgEaYlF7mKDw=";
 }
 

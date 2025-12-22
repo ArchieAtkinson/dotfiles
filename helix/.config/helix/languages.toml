@@ -50,6 +50,32 @@ indent = { tab-width = 4, unit = " " }
 '"' = '"'
 '`' = '`'
 
+[[language]]
+name = "c"
+formatter = { command = "clang-format" }
+language-servers = ["typos", "clangd"]
+roots = ["CMakeLists.txt"]
+auto-format = true
+indent = { tab-width = 4, unit = " " }
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+
+[[language]]
+name = "protobuf"
+language-servers = ["typos"]
+
+[[language]]
+name = "json"
+language-servers = ["typos"]
+
+
+
 [language-server.rust-analyzer]
 command = "rust-analyzer"
 

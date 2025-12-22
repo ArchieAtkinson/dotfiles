@@ -2,11 +2,8 @@
   description = "Generate .deb packages for specified applications";
 
   inputs = {
-    nixpkgs.url = "nixpkgs";
-    bundlers = {
-      url = "github:NixOS/bundlers";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    bundlers.url = "github:NixOS/bundlers";
   };
 
   outputs = {self, nixpkgs, bundlers }:
@@ -18,6 +15,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         toDEB = bundlers.bundlers.${system}.toDEB;
+        toArx = bundlers.bundlers.${system}.toArx;
 
         apps = {
           helix   = pkgs.helix;
@@ -26,13 +24,18 @@
           typos-lsp = pkgs.typos-lsp;
         };
 
-        # Rename keys to *-deb so they’re easy to find/build
         debs = pkgs.lib.mapAttrs' (name: drv: {
           name = "${name}-deb";
           value = toDEB drv;
         }) apps;
+
+        arxs = pkgs.lib.mapAttrs' (name: drv: {
+          name = "${name}-arx";
+          value = toArx drv;
+        }) apps;
+        
       in
-        debs
+        debs // arxs
     );
   };
 }

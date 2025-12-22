@@ -1,76 +1,20 @@
 [preset.standard]
 create_options = ["-it",
-   "-v $HOME/.ssh:/home/user/.ssh",
-   "-v $HOME/dotfiles/helix/.config/helix:/home/user/.config/helix",
-   "-v $HOME/dotfiles/lazygit/.config/lazygit:/home/user/.config/lazygit",
-   "-v $HOME/dotfiles/yazi/.config/yazi:/home/user/.config/yazi",
+   "-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK",
+   "-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK",
+   "-v /dev:/dev",
+   "--privileged",
 ]
-cp_cmds = ["bundles/packages  CONTAINER:/tmp/"]
+cp_cmds = ["/home/archie/dotfiles/bundler/bundle/.  CONTAINER:/tmp/bundle"]
+exec_cmds = ["bash -c 'cd /tmp/bundle && bash install.sh'"]
 entry_options = ["-it", "-e EDITOR=hx"]
 entry_cmd = "/bin/bash"
 
-[environment.notus]
-dockerfile = "$HOME/notus-workspace/notus/.devcontainer/Dockerfile"
-build_context = "$HOME/notus-workspace/notus"
-create_options = ["-v $HOME/notus-workspace/notus:/home/user/west-workspace/notus"]
-exec_options = ["-u user","-e USER=user"]
-entry_options = [ "-u user", "-e USER=user"]
-exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
+[environment.std]
+devcontainer_json = "$PWD/.devcontainer/devcontainer.json"
 presets = ["standard"]
 
-[environment.thermal]
-dockerfile = "$HOME/arribada/op-thermal-camera/dockerfile"
-build_context = "$HOME/arribada/op-thermal-camera"
-create_options = ["-v $HOME/arribada/op-thermal-camera:/workspace/op-thermal-camera",
-   "-v /dev:/dev",
-   "--privileged",
-]
-exec_cmds = ["dpkg --force-overwrite -i -R /tmp/packages"]
-presets = ["standard"]
-
-
-[environment.portal]
-dockerfile = "$HOME/arribada/developer_portal/.devcontainer/Dockerfile"
-create_options = ["-v $HOME/arribada/developer_portal:/workspace/developer_portal",
-   "-p 3000:3000"
-]
-exec_cmds = ["dpkg --force-overwrite -i -R /tmp/packages"]
-presets = ["standard"]
-
-[environment.lpm]
-dockerfile = "$HOME/arribada/marlin-lpm-fw/.devcontainer/Dockerfile"
-build_context = "$HOME/arribada/marlin-lpm-fw"
-create_options = ["-v $HOME/arribada/marlin-lpm-fw:/home/user/west-workspace/marlin-lpm-fw",
-   "-v /dev:/dev",
-   "--privileged",
-]
-exec_options = ["-u user","-e USER=user"]
-entry_options = [ "-u user", "-e USER=user"]
-exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
-presets = ["standard"]
-
-
-[environment.linkit]
-dockerfile = "$PWD/.devcontainer/Dockerfile"
-build_context = "$PWD"
-create_options = ["-v $PWD:/home/user/west-workspace/linkitv4",
-   "-v /dev:/dev",
-   "--privileged",
-]
-exec_options = ["-u user","-e USER=user"]
-entry_options = [ "-u user", "-e USER=user"]
-exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
-presets = ["standard"]
-
-
-[environment.timelord]
-dockerfile = "$PWD/.devcontainer/Dockerfile"
-build_context = "$PWD"
-create_options = ["-v $PWD:/home/user/west-workspace/timelord-firmware",
-   "-v /dev:/dev",
-   "--privileged",
-]
-exec_options = ["-u user","-e USER=user"]
-entry_options = [ "-u user", "-e USER=user"]
-exec_cmds = ["sudo dpkg --force-overwrite -i -R /tmp/packages"]
+[environment.jump]
+image = "quay.io/jumpstarter-dev/jumpstarter:latest"
+create_options = ["-v $PWD:/workspace/jumpstarter-testing",]
 presets = ["standard"]

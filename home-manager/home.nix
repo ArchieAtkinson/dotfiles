@@ -75,7 +75,13 @@ in
       steam-tui
       steamcmd
       sdrpp
+      popsicle
+      segger-jlink
    ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "segger-jlink-qt4-874"
+  ];   
 
   programs.nh = {
     enable = true;
