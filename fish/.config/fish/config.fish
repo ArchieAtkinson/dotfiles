@@ -15,6 +15,10 @@ function hibernate
     systemctl hibernate
 end
 
-function cd
-    echo "Use z!"
+function j
+    just -g $argv
+end
+
+function reload
+    source ~/.config/fish/config.fish
 end

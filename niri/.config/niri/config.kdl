@@ -13,22 +13,24 @@ spawn-at-startup "mako"
 
 environment {
     DISPLAY ":0"
+    MOZ_ENABLE_WAYLAND "1"
+    MOZ_WAYLAND_USE_VAAPI "1"
+    QT_QPA_PLATFORM "wayland"
+    GDK_BACKEND "wayland"
+}
+
+cursor {
+    hide-when-typing
+    hide-after-inactive-ms 10000
 }
 
 input {
     keyboard {
         xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
-            // For example:
             layout "gb"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
         }
     }
 
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
     touchpad {
         // off
         tap
@@ -43,11 +45,8 @@ input {
     }
 
     mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
+        accel-speed 0.5
+        accel-profile "flat"
     }
 
     trackpoint {
@@ -59,21 +58,9 @@ input {
         // scroll-button 273
         // middle-emulation
     }
-
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
-
-    // Focus windows and outputs automatically when moving the mouse into them.
-    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
+// Laptop
 output "eDP-1" {
     mode "3840x2400@59.994"
     scale 2
@@ -81,7 +68,7 @@ output "eDP-1" {
     position  x=-2160 y=0
 }
 
-
+// 4k Monitor
 output "DP-1" {
     mode "3840x2160@60.000"
     scale 1.5
@@ -89,6 +76,13 @@ output "DP-1" {
     focus-at-startup
 }
 
+// LG 2k
+output "DP-3" {
+    mode "2560x1440@143.933"
+    scale 1.1
+    transform "normal"
+    focus-at-startup
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -107,15 +101,8 @@ layout {
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
-        proportion 0.33333
         proportion 0.5
-        proportion 0.66667
-
-        // Fixed sets the width in logical pixels exactly.
-        // fixed 1920
+        proportion 1.0
     }
 
     // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
@@ -301,7 +288,6 @@ binds {
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
 
-    
     Mod+Ctrl+H { focus-monitor-left; }
     Mod+Ctrl+L { focus-monitor-right; }
 
@@ -309,13 +295,13 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+R { switch-preset-column-width; }
 
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Mod+Left { set-column-width "-10%"; }
+    Mod+Right { set-column-width "+10%"; }
 
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Up { set-window-height "-10%"; }
+    Mod+Down { set-window-height "+10%"; }
 
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }

@@ -33,7 +33,7 @@ runInTerminal = true
 [[language]]
 name = "markdown"
 language-servers = ["typos", "marksman"]
-
+soft-wrap.wrap-indicator = ""
 
 [[language]]
 name = "cpp"

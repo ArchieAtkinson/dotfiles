@@ -12,4 +12,4 @@ else
 fi
 
 mkdir -p $HOME/.config
-rsync -Ra .config/ $HOME/.config
+rsync -Ra home $HOME

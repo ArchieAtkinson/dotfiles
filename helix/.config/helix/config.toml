@@ -3,7 +3,7 @@ theme = "catppuccin_macchiato"
 [editor]
 true-color = true
 bufferline = "always"
-text-width = 100
+text-width = 90
 mouse = false
 end-of-line-diagnostics = "hint"
 

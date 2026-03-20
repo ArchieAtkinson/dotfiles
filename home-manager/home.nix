@@ -34,6 +34,7 @@ in
   
   home.shell.enableFishIntegration = true;
 
+
   programs.direnv = {
     enable = true;
     silent = true;
@@ -43,8 +44,10 @@ in
   nixpkgs.config.segger-jlink.acceptLicense = true;
   nixpkgs.config.allowUnfree = true; 
   home.packages = with pkgs; [
-      neofetch
+      fastfetch
       fish
+      fishPlugins.pure
+      fishPlugins.sponge
       stow
       local.berth
       helix
@@ -72,11 +75,12 @@ in
       devcontainer
       nrfconnect
       nrf-udev
-      steam-tui
-      steamcmd
+      # steam-tui
+      # steamcmd
       sdrpp
       popsicle
       segger-jlink
+      mixxx
    ];
 
   nixpkgs.config.permittedInsecurePackages = [
