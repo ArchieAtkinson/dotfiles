@@ -10,7 +10,7 @@ in
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
-  
+
   programs.yazi = {
     enable = true;
     settings = {
@@ -29,63 +29,62 @@ in
     theme.flavor = {
       dark = "catppuccin-macchiato";
       light = "catppuccin-latte";
-    };    
+    };
   };
-  
-  home.shell.enableFishIntegration = true;
 
+  home.shell.enableFishIntegration = true;
 
   programs.direnv = {
     enable = true;
     silent = true;
     nix-direnv.enable = true;
   };
-    
+
   nixpkgs.config.segger-jlink.acceptLicense = true;
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-      fastfetch
-      fish
-      fishPlugins.pure
-      fishPlugins.sponge
-      stow
-      local.berth
-      helix
-      lazygit
-      neofetch
-      just
-      git
-      zellij
-      typos-lsp
-      nil
-      nixd
-      ripgrep
-      fd
-      bat
-      wget
-      asciinema_3
-      fzf
-      zoxide
-      fuzzel
-      mako
-      unzip
-      lxsession
-      minicom
-      lazydocker
-      devcontainer
-      nrfconnect
-      nrf-udev
-      # steam-tui
-      # steamcmd
-      sdrpp
-      popsicle
-      segger-jlink
-      mixxx
-   ];
+    kicad-unstable
+    fastfetch
+    fish
+    fishPlugins.pure
+    fishPlugins.sponge
+    stow
+    local.berth
+    helix
+    lazygit
+    just
+    git
+    zellij
+    typos-lsp
+    nixfmt
+    nixd
+    ripgrep
+    fd
+    bat
+    wget
+    asciinema_3
+    fzf
+    zoxide
+    fuzzel
+    mako
+    unzip
+    lxsession
+    minicom
+    lazydocker
+    devcontainer
+    nrfconnect
+    nrf-udev
+    # steam-tui
+    # steamcmd
+    sdrpp
+    popsicle
+    segger-jlink
+    mixxx
+  ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "segger-jlink-qt4-874"
-  ];   
+  ];
 
   programs.nh = {
     enable = true;
@@ -93,6 +92,6 @@ in
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/archie/system";
   };
-  
+
   programs.home-manager.enable = true;
 }

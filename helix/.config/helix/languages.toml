@@ -75,6 +75,10 @@ name = "json"
 language-servers = ["typos"]
 
 
+[[language]]
+name = "nix"
+auto-format = true
+language-servers = ["typos", "nixd"]
 
 [language-server.rust-analyzer]
 command = "rust-analyzer"
@@ -93,4 +97,17 @@ command = "clangd"
 [language-server.marksman]
 command = "marksman"
 
+[language-server.nixd]
+command = "nixd"
 
+[language-server.nixd.config.nixd.formatting]
+command = ["nixfmt"]
+
+[language-server.nixd.config.nixd.nixpkgs]
+expr = "import (builtins.getFlake \"/etc/nixos\").inputs.nixpkgs { }"
+
+[language-server.nixd.config.nixd.options.nixos]
+expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.xps.options"
+
+[language-server.nixd.config.nixd.options.home-manager]
+expr = "(builtins.getFlake \"/etc/nixos\").homeConfigurations.archie.options"
