@@ -62,8 +62,8 @@ input {
 
 // Laptop
 output "eDP-1" {
-    mode "3840x2400@59.994"
-    scale 2
+    mode "1920x1200@60.002"
+    scale 1.25
     transform "normal"
     position  x=-2160 y=0
 }

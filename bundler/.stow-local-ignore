@@ -1,6 +1,0 @@
-build-debs.sh
-bundle
-flake.lock
-flake.nix
-install.sh
-result

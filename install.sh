@@ -1,1 +1,0 @@
-stow --target=$HOME --restow */
