@@ -61,12 +61,21 @@ input {
 }
 
 // Laptop
+{{- if eq .chezmoi.hostname "framework" }}
 output "eDP-1" {
     mode "1920x1200@60.002"
     scale 1.25
     transform "normal"
     position  x=-2160 y=0
 }
+{{- else }}
+output "eDP-1" {
+    mode "3840x2400@59.994"
+    scale 2
+    transform "normal"
+    position  x=-2160 y=0
+}
+{{- end }}
 
 // 4k Monitor
 output "DP-1" {

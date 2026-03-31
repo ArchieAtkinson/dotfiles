@@ -19,7 +19,11 @@
     },
 
     "battery": {
+        {{- if eq .chezmoi.hostname "framework" }}
         "bat": "BAT1",
+        {{- else }}
+        "bat": "BAT0",
+        {{- end }}
         "interval": 60,
         "format": "{icon}  {capacity}%",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
