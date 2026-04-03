@@ -4,6 +4,7 @@ serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
 show_startup_tips false
 default_mode   "locked"
+default_layout "welcome"
 
 keybinds clear-defaults=true {
 
@@ -281,7 +282,9 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager"
+    welcome-screen location="zellij:session-manager" {
+        welcome-screen true
+    }
     zj-quit location="file:~/.config/zellij/bin/zj-quit.wasm"
 }
 load_plugins {}

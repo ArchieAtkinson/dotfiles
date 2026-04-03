@@ -282,6 +282,16 @@ window-rule {
     default-window-height { proportion 0.25; }
 }
 
+
+window-rule {
+    match title="bluetui-popup"
+
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 500; }
+    default-floating-position x=100 y=100 relative-to="top-right"
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 

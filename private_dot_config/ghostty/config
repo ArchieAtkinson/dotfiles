@@ -1,6 +1,5 @@
 # [ Ctrl + Shift + , ] - Reload Config (Only some options can be reloaded at runtime)
 theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
 window-decoration = none
-initial-command = zellij -l welcome
 # [ Ctrl + Zero] - Reload Font Size ( Requires Config Reload First)
 font-size = 12
