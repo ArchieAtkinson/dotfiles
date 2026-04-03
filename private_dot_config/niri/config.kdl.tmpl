@@ -281,8 +281,7 @@ window-rule {
     default-column-width { proportion 0.25; }
     default-window-height { proportion 0.25; }
 }
-
-
+    
 window-rule {
     match title="bluetui-popup"
 
@@ -292,11 +291,21 @@ window-rule {
     default-floating-position x=100 y=100 relative-to="top-right"
 }
 
+
+window-rule {
+    match title="popup"
+
+    open-floating true
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 0.25; }
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "ghostty"; }
     Mod+D { spawn "fuzzel"; }
+    Mod+G { spawn "ghostty" "--title=popup" "--font-size=16"; }
     Super+Alt+L { spawn "hyprlock"; }
     Mod+S { screenshot; }
 
