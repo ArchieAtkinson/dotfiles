@@ -24,12 +24,9 @@
     color: @foreground-inactive;
 }
 
-#memory,
-#temperature {
-    padding-left: 1em
-}
-
 #cpu,
+#memory,
+#temperature, 
 #wireplumber,
 #battery,
 #backlight,

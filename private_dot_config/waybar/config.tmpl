@@ -4,7 +4,7 @@
     "height": 24,
     "spacing": 5,
 
-    "modules-left": ["load", "memory", "temperature"],
+    "modules-left": ["cpu", "memory", "temperature"],
     "modules-center": ["clock"],
     "modules-right": ["wireplumber", "battery", "backlight", "network", "bluetooth", "tray"],
 
@@ -34,25 +34,26 @@
         "format": "\udb80\udcdf  {percent}%",
     },
 
-    "load": {
-        "interval": 10,
-        "format": "  {load1}%",
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage:>2}%",
     },
 
     "memory": {
-        "interval": 30,
-        "format": "\uf4bc {used:0.1f}G"
+        "interval": 5,
+        "format": "\uf4bc {used:>3}G"
     },
 
     "temperature": {
-        "interval": 60,
+        "interval": 5,
         "thermal-zone": 10,
         "format": "  {temperatureC}°C"
     },
 
     "network": {
         "format": "",
-        "format-ethernet": "\udb83\udc9d",
+        "interval": 5,
+        "format-ethernet": "\udb83\udc9d {bandwidthDownBits:>5}",
         "format-wifi": "{icon}",
         "format-disconnected": "\udb83\udc9c",
         "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
