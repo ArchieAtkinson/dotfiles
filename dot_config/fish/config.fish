@@ -1,5 +1,6 @@
 abbr -a --position anywhere sysflake $HOME/system
 fzf --fish | source
+set -g fish_expand_tilde 1
 
 function fish_greeting
 end

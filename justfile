@@ -12,3 +12,10 @@ airpods:
         bluetoothctl -- connect {{AIRPODS_UUID}}
     fi
 
+z-new name dir:
+    #!/usr/bin/env fish
+    cd {{dir}}
+    zellij attach --create-background {{name}} options --default-layout default
+    zellij action switch-session {{name}}
+z-switch name:
+    zellij action switch-session {{name}}
