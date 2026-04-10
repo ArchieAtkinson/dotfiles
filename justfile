@@ -1,6 +1,8 @@
-@vpn arg:
+vpn arg:
     sudo systemctl {{arg}} openvpn-tunnelbear.service
 
+jellyfin arg:
+    sudo systemctl {{arg}} jellyfin.service
 
 AIRPODS_UUID := "80:95:3A:D6:F3:38"
 
