@@ -1,6 +1,10 @@
-abbr -a --position anywhere sysflake $HOME/system
 fzf --fish | source
-set -g fish_expand_tilde 1
+set -U fish_expand_tilde 1
+set -U pure_enable_single_line_prompt true
+set -U fish_transient_prompt 1
+set -U pure_truncate_prompt_current_directory_keeps 1
+set -U sponge_delay 5
+set -U pure_enable_nixdevshell false
 
 function fish_greeting
 end
