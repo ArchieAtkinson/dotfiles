@@ -1,6 +1,3 @@
-vpn arg:
-    sudo systemctl {{arg}} openvpn-tunnelbear.service
-
 jellyfin arg:
     sudo systemctl {{arg}} jellyfin.service
 
