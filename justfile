@@ -18,3 +18,6 @@ z-new name dir:
     zellij action switch-session {{name}}
 z-switch name:
     zellij action switch-session {{name}}
+
+restart-waybar:
+    kill -SIGUSR2 .waybar-wrapped

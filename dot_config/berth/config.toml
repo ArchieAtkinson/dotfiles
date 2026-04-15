@@ -5,9 +5,9 @@ create_options = ["-it",
    "-v /dev:/dev",
    "--privileged",
 ]
-cp_cmds = ["/home/archie/dotfiles/bundler/bundle/.  CONTAINER:/tmp/bundle"]
-exec_cmds = ["bash -c 'cd /tmp/bundle && bash install.sh'"]
-entry_options = ["-it", "-e EDITOR=hx"]
+cp_cmds = ["std-env/rucksack/.  CONTAINER:/tmp/rucksack"]
+exec_cmds = ["bash -c 'cd /tmp/rucksack && bash install.sh'"]
+entry_options = ["-it"]
 entry_cmd = "/bin/bash"
 
 [environment.std]
