@@ -2,6 +2,8 @@ spawn-at-startup "swayidle"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "mako"
 
+
+
 environment {
     DISPLAY ":0"
     MOZ_ENABLE_WAYLAND "1"
@@ -113,8 +115,10 @@ animations {
 }
 
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match title="^Picture-in-Picture$"
     open-floating true
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 0.25; }
 }
 
 window-rule {
@@ -160,7 +164,7 @@ binds {
     Mod+G { spawn "ghostty" "--title=popup" "--font-size=16"; }
     Super+Alt+L { spawn "hyprlock"; }
     Mod+S { screenshot; }
-
+    Mod+A { spawn "handy" "--toggle-transcription"; }
     Mod+Q { close-window; }
 
     Mod+J { focus-window-or-workspace-down; }

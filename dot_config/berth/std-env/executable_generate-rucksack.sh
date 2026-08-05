@@ -7,7 +7,7 @@ rm -rf rucksack
 mkdir -p rucksack/dotfiles/.config
 
 cp -rL $HOME/.config/helix rucksack/dotfiles/.config
-cp -rL $HOME/.config/yazi rucksack/dotfiles/.config
+cp -rL --no-preserve=mode,ownership $HOME/.config/yazi rucksack/dotfiles/.config
 cp -rL $HOME/.config/lazygit rucksack/dotfiles/.config
 cp -rL $HOME/.config/zellij rucksack/dotfiles/.config
 

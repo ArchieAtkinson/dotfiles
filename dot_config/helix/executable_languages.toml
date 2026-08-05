@@ -32,8 +32,9 @@ runInTerminal = true
 
 [[language]]
 name = "markdown"
-language-servers = ["typos", "marksman"]
+language-servers = ["zk", "typos", "marksman"]
 soft-wrap.wrap-indicator = ""
+roots = [".zk"]
 
 [[language]]
 name = "cpp"
@@ -96,6 +97,10 @@ command = "clangd"
 
 [language-server.marksman]
 command = "marksman"
+
+[language-server.zk]
+command = "zk"
+args = ["lsp"]
 
 [language-server.nixd]
 command = "nixd"
