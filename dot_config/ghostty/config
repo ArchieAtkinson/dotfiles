@@ -3,3 +3,4 @@ theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
 window-decoration = none
 # [ Ctrl + Zero] - Reload Font Size ( Requires Config Reload First)
 font-size = 12
+mouse-scroll-multiplier = 2

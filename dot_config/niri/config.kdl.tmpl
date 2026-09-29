@@ -31,7 +31,8 @@ input {
     }
 
     mouse {
-        accel-speed 0.5
+        accel-speed 0
+        scroll-factor 0.5
         accel-profile "flat"
     }
 }
@@ -61,9 +62,9 @@ output "PNP(XGM) XGIMI TV 0x00000001" {
 }
 
 // 4k Monitor
-output "DP-1" {
+output "LG Electronics LG ULTRAGEAR 0x001B9EF9" {
     mode "3840x2160@60.000"
-    scale 1.5
+    scale 1.75
     transform "normal"
     focus-at-startup
 }
